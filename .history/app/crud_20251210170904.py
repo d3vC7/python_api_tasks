@@ -15,7 +15,7 @@ class TaskCRUD:
             tasks = cursor.fetchall()
             return tasks
         except Exception as e:
-                return {"status": "error", "message": f".get_all_tasks. An unexpected error occurred: {e}"}
+                return {"status": "error", "message": f"get_all_tasks. An unexpected error occurred: {e}"}
         finally:
             cursor.close()
 

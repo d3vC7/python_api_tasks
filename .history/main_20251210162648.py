@@ -2,11 +2,12 @@ from fastapi import FastAPI
 from app.api import router
 
 app = FastAPI(
-    title="Prueba Técnica",
-    description="API REST CRUD",
+    title="Task Management API",
+    description="A simple API for managing tasks with MySQL database",
     version="1.0.0"
 )
 
+# Include the router
 app.include_router(router)
 
 @app.get("/")

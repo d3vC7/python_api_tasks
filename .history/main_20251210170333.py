@@ -7,6 +7,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# Include the router
 app.include_router(router)
 
 @app.get("/")

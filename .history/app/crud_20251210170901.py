@@ -15,7 +15,7 @@ class TaskCRUD:
             tasks = cursor.fetchall()
             return tasks
         except Exception as e:
-                return {"status": "error", "message": f".get_all_tasks. An unexpected error occurred: {e}"}
+                return {"status": "error", "message": f"get_all_tasks. An unexpected error occurred: {e}"}
         finally:
             cursor.close()
 
@@ -27,6 +27,7 @@ class TaskCRUD:
             query = "SELECT * FROM tasks WHERE id = %s"
             cursor.execute(query, (task_id,))
             task = cursor.fetchone()
+            cursor.close()
         except Exception as e:
                 return {"status": "error", "message": f"get_all_tasks. An unexpected error occurred: {e}"}
         finally:

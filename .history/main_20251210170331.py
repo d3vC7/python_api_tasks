@@ -3,10 +3,11 @@ from app.api import router
 
 app = FastAPI(
     title="Prueba Técnica",
-    description="API REST CRUD",
+    description="API REST CRUd ",
     version="1.0.0"
 )
 
+# Include the router
 app.include_router(router)
 
 @app.get("/")

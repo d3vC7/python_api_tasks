@@ -1,9 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
 import os
-import time
-from typing import Optional
-import logging
 
 class DatabaseConnection:
     _instance = None

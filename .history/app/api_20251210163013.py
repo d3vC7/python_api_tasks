@@ -13,7 +13,7 @@ async def get_all_items():
 
 @router.get("/items/{item_id}", response_model=TaskResponse)
 async def get_item(item_id: int):
-    """Get a task by ID"""
+    """Get a specific task by ID"""
     task = TaskCRUD.get_task_by_id(item_id)
     if not task:
         raise HTTPException(

@@ -7,30 +7,26 @@ class TaskCRUD:
     
     @staticmethod
     def get_all_tasks() -> List[dict]:
-        try:
-            connection = get_db_connection()
-            cursor = connection.cursor(dictionary=True)
-            query = "SELECT * FROM tasks ORDER BY created_at ASC"
-            cursor.execute(query)
-            tasks = cursor.fetchall()
-            return tasks
-        except Exception as e:
-                return {"status": "error", "message": f".get_all_tasks. An unexpected error occurred: {e}"}
-        finally:
-            cursor.close()
+        connection = get_db_connection()
+        cursor = connection.cursor(dictionary=True)
 
+        query = "SELECT * FROM tasks ORDER BY created_at ASC"
+        cursor.execute(query)
+        tasks = cursor.fetchall()
+        cursor.close()
+        return tasks
+    
     @staticmethod
     def get_task_by_id(task_id: int) -> Optional[dict]:
-        try:
-            connection = get_db_connection()
-            cursor = connection.cursor(dictionary=True)
-            query = "SELECT * FROM tasks WHERE id = %s"
-            cursor.execute(query, (task_id,))
-            task = cursor.fetchone()
-        except Exception as e:
-                return {"status": "error", "message": f"get_all_tasks. An unexpected error occurred: {e}"}
-        finally:
-            cursor.close()
+        connection = get_db_connection()
+        cursor = connection.cursor(dictionary=True)
+        
+        query = "SELECT * FROM tasks WHERE id = %s"
+        cursor.execute(query, (task_id,))
+        task = cursor.fetchone()
+        
+        cursor.close()
+        return task
     
     @staticmethod
     def create_task(task: TaskCreate) -> dict:
